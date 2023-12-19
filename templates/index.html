@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ask Image</title>
+
+    <style>
+        input {
+            width: 75%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="chat">
+
+    {% if chat %}
+
+        {{  chat  }}
+
+    <br>
+
+    <img src="static/images/{{image}}" alt="image uploaded" width="90%">
+
+    <br><br>
+    
+    {% endif %}
+
+</div>
+
+<form method="POST" action="" enctype="multipart/form-data">
+
+    {{ form.hidden_tag() }}
+    {{ form.question }}<br><br>
+    {{ form.photo }}<br><br>
+            {% for error in form.photo.errors %}
+                <span style="color: red;">{{ error }}</span>
+            <br><br>
+            {% endfor %}
+    {{ form.submit }}
+
+</form>
+
+</body>
+</html>
